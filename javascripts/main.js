@@ -24,19 +24,7 @@ const writeFishes = (arrayOfFishes) => {
   })
   // Write to the available div
   $("#available").append(domString);
-  // bindEvents();
 }
-
-// const bindEvents = () => {
-//   $(".add").on('click', (e) => {
-    
-//   });
-
-//   // Remove Fish
-//   $(".remove").on('click', (e) => {
-    
-//   })
-// };
 
 // Dynamically listen for events that happen on buttons with a class of add
 $('body').on('click', 'button.add', (e) => {
@@ -50,9 +38,15 @@ $('body').on('click', 'button.add', (e) => {
 
 $('body').on('click', 'button.remove', (e) => {
   const fishToMove = $(e.target).closest('.fish');
-    $("#available").append(fishToMove);
-    $(e.target).text('Add To Basket').addClass('add').removeClass('remove');
-  })
+  $("#available").append(fishToMove);
+  $(e.target).text('Add To Basket').addClass('add').removeClass('remove');
+})
+
+$("#show-sale").click(() => {
+  // alert('SALE FISHHHHH');
+  // all divs with the class fish, give me just the ones  WITHOUT the class 'on-sale' and HIDE
+  $(".fish").not(".on-sale").toggle();
+});
 
 // Load Fish
 $.get('../db/fishes.json')
